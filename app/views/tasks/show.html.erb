@@ -1,17 +1,15 @@
 <h1>Here you will find the details of your task</h1>
 
+<%= link_to 'Edit to your task', edit_task_path %>
+
+
 <h2><%= @task[:title] %></h2>
 <p><%= @task[:details] %></p>
 
-<p>
-   <% if @task.completed == true %>
-        <input type="checkbox" checked>
-         <%= "This task is completed" %>
-      <% else  %>
-        <input type="checkbox">
-        <%= "This task is not completed" %>
-       <% end %>
-</p>
+<%= form_for(@task) do |f| %>
+  <%= f.label :completed %>
+  <%= f.check_box :completed %>
+<% end %>
 
 
 <%= link_to 'Back to your tasks', tasks_path %>
